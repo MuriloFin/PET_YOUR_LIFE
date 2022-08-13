@@ -13,6 +13,9 @@
   width: 40px;
 }
 
-.navbar-lewagon .navbar-collapse .navbar-nav .nav-item {
-  color: #F3E9DC
+.nav-item a {
+  color: #F3E9DC;
+  &:hover {
+    color: #F3E9DC;
+  }
 }
