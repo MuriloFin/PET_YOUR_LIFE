@@ -28,7 +28,7 @@
 /public/packs
 /public/packs-test
 
-/node_modules
+node_modules
 /yarn-error.log
 yarn-debug.log*
 .yarn-integrity
@@ -36,4 +36,3 @@ yarn-debug.log*
 # Ignore Mac and Linux file system files
 *.swp
 .DS_Store
-
