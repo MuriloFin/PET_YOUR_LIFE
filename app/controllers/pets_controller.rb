@@ -3,11 +3,11 @@ class PetsController < ApplicationController
   before_action :pundit_policy_scoped?, only: :index
 
   def index
-    if params[:query]
-      @pets = Pet.global_search(params[:query])
-    else
+    # if params[:query]
+    #   @pets = Pet.global_search(params[:query])
+    # else
       @pets = policy_scope(Pet)
-    end
+    # end
   end
 
   def new
