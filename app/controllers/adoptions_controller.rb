@@ -14,15 +14,9 @@ class AdoptionsController < ApplicationController
     @adoption.user = current_user
     @pet = Pet.find(params[:pet_id])
     @adoption.pet = @pet
-<<<<<<< HEAD
     @pet.adopted!
     if @adoption.save
       redirect_to pets_path
-=======
-    @pet.bought!
-    if @adoption.save
-      redirect_to planets_path
->>>>>>> master
     else
       render :new
     end
