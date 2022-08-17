@@ -6,5 +6,5 @@ Rails.application.routes.draw do
     resources :adoptions, only: %i[new create show]
   end
 
-  resources :about, only: :index
+  get "about", to: "pages#about"
 end
