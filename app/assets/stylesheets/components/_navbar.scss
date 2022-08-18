@@ -1,6 +1,6 @@
 .navbar-lewagon {
   justify-content: space-between;
-  background: #483D3F;
+  background: #F3E9DC;
   padding: 0px 25px 0px 25px;
 }
 
@@ -14,8 +14,18 @@
 }
 
 .nav-item a {
-  color: #F3E9DC;
+  color: #483D3F;
+  font-weight: bold;
   &:hover {
-    color: #F3E9DC;
+    color: #483D3F;
   }
+}
+
+.navbar-brand {
+  display: flex;
+  font-weight: bold;
+}
+
+.navbar-brand p {
+  color: #483D3F;
 }

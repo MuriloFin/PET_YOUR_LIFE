@@ -30,7 +30,6 @@ h2 {
   font-size: 24px;
 }
 
-
 .teste {
   margin-top: 20px;
   text-align: center;
@@ -38,6 +37,7 @@ h2 {
 
 .btn {
   border: 1px solid #483D3F;
+  border-radius: 6px;
 }
 
 .cards {
@@ -57,14 +57,50 @@ h2 {
 .greeting {
   padding-right: 200px;
   text-align: center;
+  font-size: 40px;
 }
 
 .about {
   padding-left: 200px;
   padding-right: 200px;
   text-align: justify;
+  font-size: 20px;
+  margin-top: 30px;
 }
 
 a {
   text-decoration: none;
+  color: #483D3F;
+  &:hover {
+    color: #483D3F;
+  }
+}
+
+footer {
+  text-align: center;
+}
+
+footer ul {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  list-style: none;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.mid-child {
+  margin-left: 100px;
+  margin-right: 100px;
+}
+
+.touch {
+  text-align: center;
+  font-size: 20px;
+  margin-top: 30px;
+}
+
+.instagram {
+  text-align: center;
+  font-size: 48px;
 }
