@@ -34,6 +34,8 @@ gem 'simple_form', github: 'heartcombo/simple_form'
 gem 'devise'
 gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'master'
 gem 'pg_search', '~> 2.3.0'
+gem 'cloudinary', '~> 1.16.0'
+
 
 group :development, :test do
   gem 'pry-byebug'
