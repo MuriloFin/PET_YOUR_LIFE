@@ -1,17 +1,16 @@
-<% if params[:adoption] == "true" %>
-  <%= simple_form_for(pets) do |f| %>
+<% if params[:adopt] == "true" %>
+  <%= simple_form_for(pet) do |f| %>
     <%= f.input :adopted, input_html: { value: false }, as: :hidden %>
     <%= f.submit class: "btn btn-light" %>
   <% end %>
 <% else %>
-  <%= simple_form_for(pets) do |f| %>
+  <%= simple_form_for(@pet) do |f| %>
     <%= f.input :name %>
-    <%= f.input :pet_type %>
+    <%= f.input :pet_type, collection: ["Dog", "Cat"] %>
     <%= f.input :breed %>
     <%= f.input :weight %>
     <%= f.input :size  %>
-    <%= f.input :color %>
-    <%= f.input :pressure %>
+    <%= f.input :colour %>
     <%= f.input :photo, as: :file %>
     <%= f.input :description %>
     <%= f.submit class: "btn btn-light" %>

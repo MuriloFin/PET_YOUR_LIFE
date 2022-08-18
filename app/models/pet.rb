@@ -1,7 +1,7 @@
 class Pet < ApplicationRecord
   belongs_to :user
   has_many :adoptions, dependent: :destroy
-  validate :name, :type, :breed, :colour, :size, :weight
+  validate :name, :pet_type, :breed, :colour, :size, :weight
   include PgSearch::Model
   pg_search_scope :global_search,
     against: [ :name, :type, :breed, :colour, :size, :weight ],
