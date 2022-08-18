@@ -21,8 +21,11 @@
     <% @pets.each_with_index do |pet, index| %>
       <%= link_to pet_path(pet) do %>
         <div class="card-trip">
-          <%# <img src=<%= pet.image ? pet.image : "https://source.unsplash.com/random/?dog" %>
-          <img src= "https://source.unsplash.com/random/?dog" alt="">
+          <% if pet.photo.attached? %>
+            <%= cl_image_tag pet.photo.key, height: 300, width: 400, crop: :fill %>
+          <% else %>
+            <img src= "https://source.unsplash.com/random/?dog" alt="">
+          <% end %>
           <div class="card-trip-infos">
             <div>
               <h2><%= pet.name.truncate(30) %></h2>
@@ -39,5 +42,15 @@
   <div class="create-button">
     <%= link_to 'Register Pet', new_pet_url, class: 'btn btn-light btn-lg'  %>
   </div>
+
+  <footer>
+    <ul>
+      <li> <%= link_to 'Terms of Use', terms_path %></li>
+      <div class="mid-child">
+        <li><%= link_to 'Get in Touch', touch_path %> </li>
+      </div>
+      <li><%= link_to 'Donate', donate_path %></li>
+    </ul>
+  </footer>
 
   </div>

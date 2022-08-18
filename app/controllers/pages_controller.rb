@@ -5,4 +5,14 @@ class PagesController < ApplicationController
   def about
     skip_authorization
   end
+
+  def terms
+  end
+
+  def touch
+  end
+
+  def donate
+  end
+
 end

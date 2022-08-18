@@ -7,4 +7,7 @@ Rails.application.routes.draw do
   end
 
   get "about", to: "pages#about"
+  get "terms", to: "pages#terms", as: 'terms'
+  get "touch", to: "pages#touch", as: 'touch'
+  get "donate", to: "pages#donate", as: 'donate'
 end
