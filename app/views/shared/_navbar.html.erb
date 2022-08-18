@@ -1,7 +1,10 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
   <div class="container-fluid">
-    <%= link_to root_path, class: "navbar-brand" do %>
-      <%= image_tag "paw.png" %>
+    <div class="logo-test">
+      <%= link_to root_path, class: "navbar-brand" do %>
+        <%= image_tag "194279.png" %>
+        <p class="mb-0 ms-2 mt-1">Pet Your Life</p>
+    </div>
     <% end %>
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -19,6 +22,8 @@
           <li class="nav-item">
             <%= link_to "About Us", about_path, class: "nav-link" %>
           </li>
+
+
 
           <% if current_user %>
             <li class="nav-item dropdown">
