@@ -1,5 +1,6 @@
 class Pet < ApplicationRecord
   belongs_to :user
+  has_one_attached :photo
   has_many :adoptions, dependent: :destroy
   validate :name, :pet_type, :breed, :colour, :size, :weight
   include PgSearch::Model
