@@ -6,21 +6,29 @@ class PetsController < ApplicationController
     # if params[:query]
     #   @pets = Pet.global_search(params[:query])
     # else
-      @pets = policy_scope(Pet)
+
     # end
+    if params[:query].present?
+      @pets = Pet.where("name ILIKE ?", "%#{params[:query]}%")
+    else
+      @pets = policy_scope(Pet)
+    end
   end
 
   def new
     @pet = Pet.new
-    authorize(@pet)
+    authorize @pet
   end
 
   def create
     @pet = Pet.new(pet_params)
     authorize(@pet)
     @pet.user = current_user
-    @pet.save
-    redirect_to pets_path
+    if @pet.save
+      redirect_to pets_path
+    else
+      render :new
+    end
   end
 
   def show
@@ -56,7 +64,7 @@ class PetsController < ApplicationController
   end
 
   def pet_params
-    params.require(:pet).permit(:name, :type, :breed, :colour, :size, :weight, :description, :image, :adopted)
+    params.require(:pet).permit(:name, :pet_type, :breed, :colour, :size, :weight, :description, :image, :adopted)
   end
 
   private
