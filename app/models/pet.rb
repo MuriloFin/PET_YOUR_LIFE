@@ -4,7 +4,7 @@ class Pet < ApplicationRecord
   validate :name, :pet_type, :breed, :colour, :size, :weight
   include PgSearch::Model
   pg_search_scope :global_search,
-    against: [ :name, :type, :breed, :colour, :size, :weight ],
+    against: %i[ name pet_type breed colour size weight ],
     associated_against: {
       user: %i[first_name last_name]
     },
