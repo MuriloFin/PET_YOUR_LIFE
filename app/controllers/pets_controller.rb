@@ -1,5 +1,5 @@
 class PetsController < ApplicationController
-  skip_before_action :authenticate_user!, only: %i[index show]
+  before_action :authenticate_user!
   before_action :pundit_policy_scoped?, only: :index
 
   def index
