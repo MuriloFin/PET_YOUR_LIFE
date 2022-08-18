@@ -1,7 +1,18 @@
-<h1>Pets#show</h1>
-<p>Find me in app/views/pets/show.html.erb</p>
-
 <div class="container">
-  <h1><%= @pet.name %></h1>
-  <img src=<%= pet.image ? pet.image : "https://source.unsplash.com/random/?pets" %> alt="">
+  <h1>Este é <%= @pet.name %></h1>
+  <%# <img src=<%= @pet.image ? @pet.image : "https://source.unsplash.com/random/?planet" %>
+
+
+  <div class="show-cards">
+    <ul>
+      <li><strong>Nome: </strong><%= @pet.name %></li>
+      <li><strong>Raça: </strong><%= @pet.breed %></li>
+      <li><strong>Peso: </strong><%= @pet.weight %></li>
+      <li><strong>Tamanho: </strong><%= @pet.size %></li>
+      <li><strong>Cor: </strong><%= @pet.colour %></li>
+      <% if @pet.description.present? %>
+      <li><strong>Descrição: </strong><%= @pet.description %></li>
+      <% end %>
+    </ul>
+  </div>
 </div>
