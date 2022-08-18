@@ -1,8 +1,7 @@
 class PetsController < ApplicationController
-  before_action :authenticate_user!
-  before_action :pundit_policy_scoped?, only: :index
 
   def index
+    skip_authorization
     # if params[:query]
     #   @pets = Pet.global_search(params[:query])
     # else
@@ -32,6 +31,7 @@ class PetsController < ApplicationController
   end
 
   def show
+    skip_authorization
     @pet = Pet.find(params[:id])
     authorize(@pet)
   end
