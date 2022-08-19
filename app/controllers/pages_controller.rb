@@ -3,6 +3,7 @@ class PagesController < ApplicationController
   end
 
   def about
+    skip_authorization
   end
 
   def terms
