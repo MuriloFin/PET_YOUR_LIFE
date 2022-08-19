@@ -1,13 +1,13 @@
-<div class="container">
-  <h1>Este é <%= @pet.name %></h1>
-  <%# <img src=<%= @pet.image ? @pet.image : "https://source.unsplash.com/random/?planet" %>
+<div class="container d-flex justify-content-center pets-show">
+  <img src=<%= @pet.photo.attached? ? @pet.photo.url : "https://source.unsplash.com/random/?pet&fit=crop&max-h=150&max-w=150" %> style="height: 300px">
 
 
-  <div class="show-cards">
-    <ul>
+  <div class="show-cards ms-4">
+    <h1 class="mt-0">Este é <%= @pet.name %></h1>
+    <ul class="list-unstyled">
       <li><strong>Nome: </strong><%= @pet.name %></li>
       <li><strong>Raça: </strong><%= @pet.breed %></li>
-      <li><strong>Peso: </strong><%= @pet.weight %></li>
+      <li><strong>Peso: </strong><%= @pet.weight %>kg</li>
       <li><strong>Tamanho: </strong><%= @pet.size %></li>
       <li><strong>Cor: </strong><%= @pet.colour %></li>
       <% if @pet.description.present? %>
