@@ -5,15 +5,7 @@ class ApplicationController < ActionController::Base
   after_action :verify_authorized, except: :index, unless: :skip_pundit?
   after_action :verify_policy_scoped, only: :index, unless: :skip_pundit?
 
-
   before_action :configure_permitted_parameters, if: :devise_controller?
-=======
-  # def auth_request?
-  #   params[:controller].include?("devise_token_auth") &&
-  #     ((controller_name == "sessions" && action_name == "create") ||
-  #     (controller_name == "registrations" && action_name == "create"))
-  # end
- 9538e6d38b6d80c5b007872b2f7b938cc470f9d1
 
   private
 
