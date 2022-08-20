@@ -7,8 +7,8 @@ class PetsController < ApplicationController
     # else
 
     # end
-    if params[:query].present?
-      @pets = Pet.where("name ILIKE ?", "%#{params[:query]}%")
+    if params[:query].present? || params['/pets'].present?
+      @pets = Pet.where("name ILIKE ?", "%#{params[:query]}%").where("breed ILIKE ?", "%#{params['/pets'][:breed]}").where("colour ILIKE ?", "%#{params['/pets'][:colour]}")
     else
       @pets = policy_scope(Pet)
     end

@@ -3,7 +3,7 @@
   <h2>Be adopted by a pet!</h2>
   <h1>PET YOUR LIFE</h1>
 
-  <div class="search-bar col-sm-8 offset-sm-2">
+  <div data-controller="filter" class="search-bar col-sm-8 offset-sm-2">
     <%= form_tag pets_path, method: :get do %>
       <%= text_field_tag :query,
         params[:query],
@@ -13,6 +13,16 @@
       <div class="teste">
         <%= submit_tag "Search", class: "btn btn-light"  %>
       </div>
+      <%= form_with url: pets_path do |f| %>
+        <%= f.select :pet_type, Pet::PET_TYPE, prompt: "Dog or Cat?", data: {
+                        filter_target: 'pet',
+                        action: 'click->filter#selectType'
+                      }%>
+        <%#= include a logic where breed is pet_type dependent %>
+        <%= f.select :breed, Pet::DOG_BREED, prompt: "Breed?"%>
+        <%= f.select :colour, Pet::COLOUR, prompt: "Colour?"%>
+        <%= f.submit %>
+      <% end %>
     <% end %>
   </div>
 

@@ -12,6 +12,12 @@ class Pet < ApplicationRecord
     using: {
       tsearch: { prefix: true }
     }
+  PET_TYPE = ["Dog", "Cat"]
+  DOG_BREED = ["Golden Retriever", "German Shepherd", "Jack Russell", "Caramelo Do Brasil"]
+  CAT_BREED = ["Siamese", "Bengal", "Maine Coon", "Gato Comum"]
+  #Make BREED dependent from PET_TYPE (i.e. if pet_type = cat, breed appearing are cat breeds only)
+  COLOUR = ["Black", "White", "Grey", "Brown", "Beige", "Multicolor"]
+  #WEIGHT? SIZE?
   def adopted!
     self.update_attribute :adopted, true
   end
