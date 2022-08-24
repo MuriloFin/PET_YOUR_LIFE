@@ -10,9 +10,10 @@
       <li><strong>Peso: </strong><%= @pet.weight %>kg</li>
       <li><strong>Tamanho: </strong><%= @pet.size %></li>
       <li><strong>Cor: </strong><%= @pet.colour %></li>
-      <% if @pet.description.present? %>
+    <% if @pet.description.present? %>
       <li><strong>Descrição: </strong><%= @pet.description %></li>
-      <% end %>
+    <% end %>
+      <%= link_to 'Adotar', new_pet_url, class: 'btn btn-light btn-lg mt-1'  %>
     </ul>
 
     <% if current_user %>
