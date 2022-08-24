@@ -14,5 +14,15 @@
       <li><strong>Descrição: </strong><%= @pet.description %></li>
       <% end %>
     </ul>
+
+    <% if current_user %>
+      <%= button_to "Contact Me", pet_chatrooms_path(@pet) %>
+    <% end %>
   </div>
 </div>
+
+<ul class="chat">
+  <% @chatrooms.each do |chat| %>
+      <li><%= link_to chat.name, chatroom_path(chat) %></li>
+  <% end %>
+</ul>

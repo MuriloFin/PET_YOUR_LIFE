@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_08_18_235921) do
+ActiveRecord::Schema.define(version: 2022_08_20_144608) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -52,6 +52,26 @@ ActiveRecord::Schema.define(version: 2022_08_18_235921) do
     t.index ["user_id"], name: "index_adoptions_on_user_id"
   end
 
+  create_table "chatrooms", force: :cascade do |t|
+    t.string "name"
+    t.bigint "user_id", default: 1
+    t.bigint "pet_id", default: 1
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["pet_id"], name: "index_chatrooms_on_pet_id"
+    t.index ["user_id"], name: "index_chatrooms_on_user_id"
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.string "content"
+    t.bigint "chatroom_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["chatroom_id"], name: "index_messages_on_chatroom_id"
+    t.index ["user_id"], name: "index_messages_on_user_id"
+  end
+
   create_table "pets", force: :cascade do |t|
     t.string "name"
     t.string "pet_type"
@@ -88,5 +108,9 @@ ActiveRecord::Schema.define(version: 2022_08_18_235921) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "adoptions", "pets"
   add_foreign_key "adoptions", "users"
+  add_foreign_key "chatrooms", "pets"
+  add_foreign_key "chatrooms", "users"
+  add_foreign_key "messages", "chatrooms"
+  add_foreign_key "messages", "users"
   add_foreign_key "pets", "users"
 end
