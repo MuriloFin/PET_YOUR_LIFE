@@ -6,39 +6,11 @@
 @import "cards";
 @import "chatroom";
 
-.carousel {
-  overflow: hidden;
-  background: white;
-  box-shadow: 0 0 15px rgba(0,0,0,0.2);
-  border-radius: 15px;
-  border: 2px solid rgb(72,61,63);
-  height: auto;
-  width: 100%;
-  scale: 0.6;
-  position: relative;
-  top: -200px;
-  margin-top: 10px;
-  margin-bottom: 20px;
-}
-
-.carousel > img {
-  object-fit: cover;
-  width: 100%;
-  height: 100%;
+.carousel .carousel-item {
+  height: 600px;
   background-size: cover;
-  background-position: center;
-}
-
-.carousel h2 {
-  font-size: 16px;
-  font-weight: bold;
-  margin: 0;
-}
-
-.carousel p {
-  font-size: 12px;
-  opacity: .7;
-  margin: 0;
+  background-repeat: no-repeat;
+  background-position: 50% 50%
 }
 
 .footer {
