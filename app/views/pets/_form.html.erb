@@ -4,7 +4,7 @@
     <%= f.submit class: "btn btn-light" %>
   <% end %>
 <% else %>
-  <%= simple_form_for(@pet) do |f| %>
+  <%= simple_form_for(pet) do |f| %>
     <%= f.input :name %>
     <%= f.input :pet_type, collection: ["Dog", "Cat"] %>
     <%= f.input :breed %>
