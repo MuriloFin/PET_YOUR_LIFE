@@ -12,6 +12,7 @@ class PetsController < ApplicationController
     else
       @pets = policy_scope(Pet)
     end
+    @data = { dog: Pet::DOG_BREED, cat: Pet::CAT_BREED }
   end
 
   def new

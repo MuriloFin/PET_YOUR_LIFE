@@ -2,8 +2,7 @@
   <h2>Make your life happier...</h2>
   <h2>Be adopted by a pet!</h2>
   <h1>PET YOUR LIFE</h1>
-
-  <div data-controller="filter" class="search-bar col-sm-8 offset-sm-2">
+  <div data-controller="filter" data-filter-data-value='<%= @data.to_json%>' class="search-bar col-sm-8 offset-sm-2">
     <%= form_tag pets_path, method: :get do %>
       <%= text_field_tag :query,
         params[:query],
@@ -14,13 +13,16 @@
         <%= submit_tag "Search", class: "btn btn-light"  %>
       </div>
       <%= form_with url: pets_path do |f| %>
-        <%= f.select :pet_type, Pet::PET_TYPE, prompt: "Dog or Cat?", data: {
-                        filter_target: 'pet',
-                        action: 'click->filter#selectType'
-                      }%>
+        <%= f.select :pet_type, Pet::PET_TYPE, {}, {prompt: "Dog or Cat?", data: {
+          filter_target: "petSelect",
+          action: "change->filter#selectPet"
+        }} %>
         <%#= include a logic where breed is pet_type dependent %>
-        <%= f.select :breed, Pet::DOG_BREED, prompt: "Breed?"%>
+        <%= f.select :breed, Pet::DOG_BREED, {}, {prompt: "Breed?", data: {
+          filter_target: "breedSelect"
+        }} %>
         <%= f.select :colour, Pet::COLOUR, prompt: "Colour?"%>
+        <%= f.range_field :size, :min=>15, :max=>100, :class=>"slide", :id=>"slider1"%>
         <%= f.submit %>
       <% end %>
     <% end %>
