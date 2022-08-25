@@ -42,6 +42,7 @@ class PetsController < ApplicationController
     skip_authorization
     @pet = Pet.find(params[:id])
     authorize(@pet)
+    @chatrooms = Chatroom.where(pet_id: params[:id])
   end
 
   def edit

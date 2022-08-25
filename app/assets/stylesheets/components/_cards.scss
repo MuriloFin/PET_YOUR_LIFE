@@ -10,10 +10,11 @@
   border: solid;
   border-color: #483D3F;
   border-width: 2px;
+  height: 350px;
 }
 
 .card-trip > img {
-  height: 175px;
+  height: 290px;
   width: 100%;
   object-fit: cover;
 }
@@ -38,6 +39,9 @@
   justify-content: space-between;
   align-items: flex-end;
   position: relative;
+  border-top: solid;
+  border-color: #483D3F;
+  border-width: 2px;
 }
 
 .card-trip-infos .card-trip-user {
@@ -70,6 +74,7 @@
   }
   #map {
     display: none;
+  }
 }
 
 // Medium devices (tablets, 768px and up)
@@ -102,8 +107,3 @@
   }
 }
 
-#map {
-  height: 100vh;
-  position: sticky;
-  top: 0;
-}
