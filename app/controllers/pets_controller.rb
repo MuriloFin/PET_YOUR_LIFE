@@ -12,6 +12,14 @@ class PetsController < ApplicationController
     else
       @pets = policy_scope(Pet)
     end
+
+    @markers = @pets.geocoded.map do |pet|
+      {
+        lat: pet.latitude,
+        lng: pet.longitude,
+        #info_window: render_to_string(partial: "info_window", locals: { pet: pet })
+      }
+    end
   end
 
   def new
