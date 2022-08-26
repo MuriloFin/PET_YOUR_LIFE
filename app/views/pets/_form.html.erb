@@ -6,7 +6,7 @@
 <% else %>
   <%= simple_form_for(pet) do |f| %>
     <%= f.input :name %>
-    <%= f.input :pet_type, collection: ["Dog", "Cat"] %>
+    <%= f.input :pet_type, collection: ["Cat", "Dog"] %>
     <%= f.input :breed %>
     <%= f.input :weight %>
     <%= f.input :size %>
