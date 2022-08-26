@@ -4,14 +4,12 @@ class Pet < ApplicationRecord
   has_many :adoptions, dependent: :destroy
   validate :name, :pet_type, :breed, :colour, :size, :weight
   include PgSearch::Model
-  pg_search_scope :global_search,
-    against: %i[ name pet_type breed colour size weight ],
-    associated_against: {
-      user: %i[first_name last_name]
-    },
-    using: {
-      tsearch: { prefix: true }
-    }
+  pg_search_scope :pet_type_search,
+    against: %i[pet_type]
+  pg_search_scope :breed_search,
+    against: %i[breed]
+  pg_search_scope :colour_search,
+    against: %i[colour]
   PET_TYPE = ["Dog", "Cat"]
   DOG_BREED = ["Golden Retriever", "German Shepherd", "Jack Russell", "Caramelo Do Brasil"]
   CAT_BREED = ["Siamese", "Bengal", "Maine Coon", "Gato Comum"]

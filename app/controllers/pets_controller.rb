@@ -1,17 +1,7 @@
 class PetsController < ApplicationController
 
   def index
-    skip_authorization
-    # if params[:query]
-    #   @pets = Pet.global_search(params[:query])
-    # else
-
-    # end
-    if params[:query].present? || params['/pets'].present?
-      @pets = Pet.where("name ILIKE ?", "%#{params[:query]}%").where("breed ILIKE ?", "%#{params['/pets'][:breed]}").where("colour ILIKE ?", "%#{params['/pets'][:colour]}")
-    else
-      @pets = policy_scope(Pet)
-    end
+    @pets = policy_scope(Pet).where(breed: search_params[:breed]).where(pet_type: search_params[:pet_type]).where(colour: search_params[:colour])
     @data = { dog: Pet::DOG_BREED, cat: Pet::CAT_BREED }
   end
 
@@ -65,10 +55,16 @@ class PetsController < ApplicationController
   end
 
   def pet_params
-    params.require(:pet).permit(:name, :pet_type, :breed, :colour, :size, :weight, :description, :photo, :adopted)
+    params.require(:pet).permit(:name, :pet_type, :breed, :colour, :size, :weight, :description, :photo, :adopted, :age, :gender)
   end
 
   private
+
+  def search_params
+    { breed: params[:breed].blank? ? Pet::DOG_BREED + Pet::CAT_BREED : params[:breed],
+      pet_type: params[:breed].blank? ? Pet::PET_TYPE : params[:pet_type],
+      colour: params[:colour].blank? ? Pet::COLOUR : params[:colour] }
+  end
 
   def pundit_policy_scoped?
     true
