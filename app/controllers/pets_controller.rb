@@ -1,8 +1,26 @@
 class PetsController < ApplicationController
-
+  skip_before_action :authenticate_user!, only: :index
   def index
     @pets = policy_scope(Pet).where(breed: search_params[:breed]).where(pet_type: search_params[:pet_type]).where(colour: search_params[:colour])
     @data = { dog: Pet::DOG_BREED, cat: Pet::CAT_BREED }
+    # if params[:query]
+    #   @pets = Pet.global_search(params[:query])
+    # else
+
+    # end
+    if params[:query].present?
+      @pets = Pet.where("name ILIKE ?", "%#{params[:query]}%")
+    else
+      @pets = policy_scope(Pet)
+    end
+
+    @markers = @pets.geocoded.map do |pet|
+      {
+        lat: pet.latitude,
+        lng: pet.longitude,
+        #info_window: render_to_string(partial: "info_window", locals: { pet: pet })
+      }
+    end
   end
 
   def new

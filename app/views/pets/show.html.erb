@@ -18,9 +18,11 @@
       <% if current_user %>
         <%= button_to "Adotar", pet_chatrooms_path(@pet), class: 'btn btn-light mt-1' %>
       <% end %>
+      <div class="separate-btns">
       <% if policy(@pet).destroy? %>
-        <%= link_to 'Delete Pet', pet_path(@pet), method: :delete, class: 'btn btn-light mt-1' %>
+        <%= link_to 'Remover Pet', pet_path(@pet), method: :delete, class: 'btn btn-light mt-1' %>
       <% end %>
+      </div>
       </ul>
       </div>
     </div>

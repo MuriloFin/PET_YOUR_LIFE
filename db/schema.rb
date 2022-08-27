@@ -86,6 +86,9 @@ ActiveRecord::Schema.define(version: 2022_08_25_222510) do
     t.string "image"
     t.string "age"
     t.string "gender"
+    t.float "latitude"
+    t.float "longitude"
+    t.string "address"
     t.index ["user_id"], name: "index_pets_on_user_id"
   end
 

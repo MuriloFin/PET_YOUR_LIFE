@@ -26,4 +26,19 @@
 .byebug_history
 node_modules
 .env*
+<<<<<<< HEAD
 /public/packs
+=======
+node_modules
+node_modules/
+>>>>>>> master
+node_modules/
+node_modules
+node_modules/
+
+/public/packs
+/public/packs-test
+/node_modules
+/yarn-error.log
+yarn-debug.log*
+.yarn-integrity
