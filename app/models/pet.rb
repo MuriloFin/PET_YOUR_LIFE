@@ -5,7 +5,7 @@ class Pet < ApplicationRecord
   has_many :chatrooms, dependent: :destroy
   validate :name, :pet_type, :breed, :colour, :size, :weight, :age
   include PgSearch::Model
-  PET_TYPE = ["Dog", "Cat"]
+  PET_TYPE = ["Cachorro", "Gato"]
   DOG_BREED = ["Golden Retriever", "German Shepherd", "Jack Russell", "Sem Raça Definida"]
   CAT_BREED = ["Siamese", "Bengal", "Maine Coon", "Sem Raça Definida"]
   COLOUR = ["Black", "White", "Grey", "Brown", "Beige", "Multicolor"]

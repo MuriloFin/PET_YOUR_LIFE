@@ -6,6 +6,7 @@ class PetsController < ApplicationController
   end
 
   def new
+    @data = { dog: Pet::DOG_BREED, cat: Pet::CAT_BREED }
     @pet = Pet.new
     authorize @pet
   end
@@ -29,6 +30,7 @@ class PetsController < ApplicationController
   end
 
   def edit
+    @data = { dog: Pet::DOG_BREED, cat: Pet::CAT_BREED }
     @pet = Pet.find(params[:id])
     authorize(@pet)
   end
