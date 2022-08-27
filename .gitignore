@@ -24,7 +24,14 @@
 
 /public/assets
 .byebug_history
-node_modules
 .env*
+/public/packs
 node_modules
 node_modules/
+
+/public/packs
+/public/packs-test
+/node_modul
+/yarn-error.log
+yarn-debug.log*
+.yarn-integrity

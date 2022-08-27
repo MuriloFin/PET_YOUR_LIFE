@@ -40,6 +40,23 @@
 <div class="titulo">
   <h1>Pet Your Life</h1>
 </div>
+<div data-controller="filter" data-filter-data-value='<%= @data.to_json%>' class="search-bar col-sm-8 offset-sm-2">
+    <%= form_tag pets_path, method: :get do %>
+      <%= form_with url: pets_path do |f| %>
+        <%= f.select :pet_type, Pet::PET_TYPE, {}, { prompt: "Cachorro ou Gato?", data: {
+          filter_target: "petSelect",
+          action: "change->filter#selectPet"
+        } } %>
+        <%= f.select :breed, Pet::DOG_BREED, {}, { prompt: "Raça?", data: {
+          filter_target: "breedSelect"
+        } } %>
+        <%= f.select :colour, Pet::COLOUR, prompt: "Cor?"%>
+        <%= f.select :colour, Pet::SIZE, prompt: "Tamanho?"%>
+        <%= f.select :colour, Pet::AGE, prompt: "Idade?"%>
+        <%= f.submit "Pesquisar"%>
+      <% end %>
+    <% end %>
+  </div>
 <div class="mx-5">
   <div class="cards">
   <% if @pets.present? %>
@@ -60,7 +77,7 @@
       <% end %>
     <% end %>
     <% else %>
-      <h3> No pet found :( </h3>
+      <h3> Nenhum pet achado :( </h3>
     <% end %>
   </div>
   </div>

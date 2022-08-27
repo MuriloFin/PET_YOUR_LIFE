@@ -1,7 +1,8 @@
 class PetsController < ApplicationController
-
+  skip_before_action :authenticate_user!, only: :index
   def index
-    skip_authorization
+    @pets = policy_scope(Pet).where(breed: search_params[:breed]).where(pet_type: search_params[:pet_type]).where(colour: search_params[:colour])
+    @data = { dog: Pet::DOG_BREED, cat: Pet::CAT_BREED }
     # if params[:query]
     #   @pets = Pet.global_search(params[:query])
     # else
@@ -23,6 +24,7 @@ class PetsController < ApplicationController
   end
 
   def new
+    @data = { dog: Pet::DOG_BREED, cat: Pet::CAT_BREED }
     @pet = Pet.new
     authorize @pet
   end
@@ -46,6 +48,7 @@ class PetsController < ApplicationController
   end
 
   def edit
+    @data = { dog: Pet::DOG_BREED, cat: Pet::CAT_BREED }
     @pet = Pet.find(params[:id])
     authorize(@pet)
   end
@@ -73,10 +76,16 @@ class PetsController < ApplicationController
   end
 
   def pet_params
-    params.require(:pet).permit(:name, :pet_type, :breed, :colour, :size, :weight, :description, :photo, :adopted)
+    params.require(:pet).permit(:name, :pet_type, :breed, :colour, :size, :weight, :description, :photo, :adopted, :age, :gender)
   end
 
   private
+
+  def search_params
+    { breed: params[:breed].blank? ? Pet::DOG_BREED + Pet::CAT_BREED : params[:breed],
+      pet_type: params[:breed].blank? ? Pet::PET_TYPE : params[:pet_type],
+      colour: params[:colour].blank? ? Pet::COLOUR : params[:colour] }
+  end
 
   def pundit_policy_scoped?
     true
