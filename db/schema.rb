@@ -65,7 +65,7 @@ ActiveRecord::Schema.define(version: 2022_08_25_222510) do
     t.bigint "user_id"
     t.string "image"
     t.string "age"
-    t.boolean "gender"
+    t.string "gender"
     t.index ["user_id"], name: "index_pets_on_user_id"
   end
 

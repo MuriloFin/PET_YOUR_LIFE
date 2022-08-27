@@ -6,13 +6,15 @@
 <% else %>
   <%= simple_form_for(@pet) do |f| %>
     <%= f.input :name %>
+    <%# <%= f.collection_radio_buttons :pet_type, [['Dog'], ['Cat']], :first, :last %>
     <%= f.input :pet_type, collection: ["Dog", "Cat"] %>
     <%= f.input :breed %>
+    <%= f.input :size, collection: ["Small", "Medium", "Big"] %>
     <%= f.input :weight %>
-    <%= f.input :size %>
-    <%= f.input :colour %>
-    <%= f.input :photo, as: :file %>
+    <%# <%= f.collection_radio_buttons :options, [[true, 'Puppy'], [false, 'Adult']], :first, :last %>
+    <%= f.input :colour, collection: ["Black", "White", "Grey", "Brown", "Beige", "Multicolor"]%>
     <%= f.input :description %>
+    <%= f.input :photo, as: :file %>
     <%= f.submit class: "btn btn-light" %>
   <% end %>
 <% end %>
