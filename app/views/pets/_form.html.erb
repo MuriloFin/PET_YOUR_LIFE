@@ -5,7 +5,6 @@
   <% end %>
 <% else %>
   <%= simple_form_for(pet) do |f| %>
-<<<<<<< HEAD
     <div class= 'row' data-controller="filter" data-filter-data-value='<%= @data.to_json%>'>
       <%= f.input :name, label: "Nome"%>
       <%# <%= f.collection_radio_buttons :pet_type, [['Dog'], ['Cat']], :first, :last %>
@@ -28,17 +27,5 @@
       <%= f.input :photo, label: "Foto", as: :file %>
     </div>
       <%= f.submit "Criar", class: "btn btn-light" %>
-=======
-    <%= f.input :name %>
-    <%= f.input :pet_type, collection: ["Cat", "Dog"] %>
-    <%= f.input :breed %>
-    <%= f.input :weight %>
-    <%= f.input :size %>
-    <%= f.input :colour %>
-    <%= f.input :address %>
-    <%= f.input :photo, as: :file %>
-    <%= f.input :description %>
-    <%= f.submit class: "btn btn-light" %>
->>>>>>> master
   <% end %>
 <% end %>

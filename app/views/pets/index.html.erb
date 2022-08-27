@@ -43,11 +43,11 @@
 <div data-controller="filter" data-filter-data-value='<%= @data.to_json%>' class="search-bar col-sm-8 offset-sm-2">
     <%= form_tag pets_path, method: :get do %>
       <%= form_with url: pets_path do |f| %>
-        <%= f.select :pet_type, Pet::PET_TYPE, { prompt: "Cachorro ou Gato?", data: {
+        <%= f.select :pet_type, Pet::PET_TYPE, {}, { prompt: "Cachorro ou Gato?", data: {
           filter_target: "petSelect",
           action: "change->filter#selectPet"
         } } %>
-        <%= f.select :breed, Pet::DOG_BREED, { prompt: "Raça?", data: {
+        <%= f.select :breed, Pet::DOG_BREED, {}, { prompt: "Raça?", data: {
           filter_target: "breedSelect"
         } } %>
         <%= f.select :colour, Pet::COLOUR, prompt: "Cor?"%>
