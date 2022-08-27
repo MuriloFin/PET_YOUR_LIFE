@@ -67,6 +67,10 @@ h2 {
   margin-top: 30px;
 }
 
+.title h1 {
+  text-shadow: 1px 0px 2px #2c2627;
+}
+
 a {
   text-decoration: none;
   color: #483D3F;
@@ -112,4 +116,24 @@ footer ul {
 .subtitulo h1 {
   text-shadow: 1px 0px 2px #2c2627;
   font-size: 30px;
+}
+
+.separate-btns {
+  margin-left: 7px;
+}
+
+.msg-size {
+  color: #F3E9DC;
+  border-radius: 8px;
+  background-color: #483d3fd6;
+  padding-right: 5px;
+  text-align: right;
+}
+
+.current-msg {
+  color: #ffffff;
+  border-radius: 8px;
+  background-color: #039edb;
+  padding-left: 5px;
+  text-align: left;
 }

@@ -2,7 +2,7 @@
   data-controller="chatroom-subscription"
   data-chatroom-subscription-chatroom-id-value="<%= @chatroom.id %>"
 >
-  <h1>#<%= @chatroom.name %></h1>
+  <h1>Chat de <%= @chatroom.name %></h1>
 
   <div class="messages" data-chatroom-subscription-target="messages">
     <% @chatroom.messages.each do |message| %>
@@ -16,9 +16,11 @@
   %>
     <%= f.input :content,
       label: false,
-      placeholder: "Message ##{@chatroom.name}",
+      placeholder: "Digite sua mensagem",
       wrapper_html: {class: "flex-grow-1"}
     %>
-    <%= f.submit "Send", class: "btn btn-light" %>
+    <div class="send-btn">
+      <%= f.submit "Enviar", class: "btn btn-light" %>
+    </div>
   <% end %>
 </div>
