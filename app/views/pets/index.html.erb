@@ -44,7 +44,7 @@
       <%= link_to pet_path(pet) do %>
         <div class="card-trip">
           <% if pet.photo.attached? %>
-            <%= cl_image_tag pet.photo.key, height: 300, width: 400, crop: :fill %>
+            <%= cl_image_tag pet.photo.key, height: 300, width: 400, :gravity=>"faces", :crop=>"thumb" %>
           <% else %>
             <img src= "https://source.unsplash.com/random/?dog" alt="">
           <% end %>
