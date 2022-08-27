@@ -28,6 +28,10 @@
     <% end %>
   </div>
 
+<div>
+  <h1><u><em>Encontre aqui o seu melhor amigo</em></u></h1>
+</div>
+<div class="mx-5">
   <div class="cards">
   <% if @pets.present? %>
     <% @pets.each_with_index do |pet, index| %>
@@ -50,19 +54,15 @@
       <h3> No pet found :( </h3>
     <% end %>
   </div>
+  </div>
   <br>
-  <div class="create-button">
-    <%= link_to 'Register Pet', new_pet_url, class: 'btn btn-light btn-lg'  %>
+<div class="footer">
+  <div class="footer-links">
+    <a href="#"><i class="fab fa-instagram"></i></a>
+    <a href="#"><i class="fab fa-facebook"></i></a>
+    <a href="#"><i class="fab fa-twitter"></i></a>
   </div>
-
-  <footer>
-    <ul>
-      <li> <%= link_to 'Terms of Use', terms_path %></li>
-      <div class="mid-child">
-        <li><%= link_to 'Get in Touch', touch_path %> </li>
-      </div>
-      <li><%= link_to 'Donate', donate_path %></li>
-    </ul>
-  </footer>
-
+  <div class="footer-copyright">
+    Não compre. Adote! <i class="fas fa-heart"></i>
   </div>
+</div>

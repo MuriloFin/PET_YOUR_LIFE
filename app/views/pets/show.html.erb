@@ -1,18 +1,32 @@
+<div class="container"><h1 class="mt-0">Este é <%= @pet.name %></h1>
 <div class="container d-flex justify-content-center pets-show">
+
   <img src=<%= @pet.photo.attached? ? @pet.photo.url : "https://source.unsplash.com/random/?pet&fit=crop&max-h=150&max-w=150" %> style="height: 300px">
-
-
-  <div class="show-cards ms-4">
-    <h1 class="mt-0">Este é <%= @pet.name %></h1>
-    <ul class="list-unstyled">
-      <li><strong>Nome: </strong><%= @pet.name %></li>
-      <li><strong>Raça: </strong><%= @pet.breed %></li>
-      <li><strong>Peso: </strong><%= @pet.weight %>kg</li>
-      <li><strong>Tamanho: </strong><%= @pet.size %></li>
-      <li><strong>Cor: </strong><%= @pet.colour %></li>
+    <div class="show-cards ms-4">
+      <ul class="list-unstyled">
+        <li><strong>Nome: </strong><%= @pet.name %></li>
+        <li><strong>Raça: </strong><%= @pet.breed %></li>
+        <li><strong>Peso: </strong><%= @pet.weight %>kg</li>
+        <li><strong>Tamanho: </strong><%= @pet.size %></li>
+        <li><strong>Cor: </strong><%= @pet.colour %></li>
       <% if @pet.description.present? %>
-      <li><strong>Descrição: </strong><%= @pet.description %></li>
+        <li><strong>Descrição: </strong><%= @pet.description %></li>
       <% end %>
-    </ul>
+      <div class="d-inline-flex justify-content-between btn-show">
+      <% if current_user %>
+        <%= button_to "Adotar", pet_chatrooms_path(@pet), class: 'btn btn-light mt-1' %>
+      <% end %>
+      <% if policy(@pet).destroy? %>
+        <%= link_to 'Delete Pet', pet_path(@pet), method: :delete, class: 'btn btn-light mt-1' %>
+      <% end %>
+      </ul>
+      </div>
+    </div>
   </div>
 </div>
+
+<ul class="chat">
+  <% @chatrooms.each do |chat| %>
+      <li><%= link_to chat.name, chatroom_path(chat) %></li>
+  <% end %>
+</ul>

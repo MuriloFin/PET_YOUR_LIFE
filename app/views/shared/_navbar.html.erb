@@ -7,31 +7,45 @@
     </div>
     <% end %>
 
+    <div class="create-button">
+    <% if current_user %>
+    <%= link_to 'Register Pet', new_pet_url, class: 'btn btn-light mt-3' %>
+    <% end %>
+    </div>
+
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
+
+    <div class="search-bar row">
+    <%= form_tag pets_path, method: :get, class:"d-flex" do %>
+      <%= text_field_tag :query,
+        params[:query],
+        class: "form-control",
+        placeholder: "Find a Pet"
+      %>
+      <div>
+        <%= submit_tag "Search", class: "btn btn-light"  %>
+      <% end %>
+      </div>
+    </div>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto">
         <% if user_signed_in? %>
           <li class="nav-item">
             <%#= link_to "My Pets", adoptions_path, class: "nav-link" %>
-
           </li>
-
           <li class="nav-item">
             <%= link_to "About Us", about_path, class: "nav-link" %>
           </li>
-
-
 
           <% if current_user %>
             <li class="nav-item dropdown">
               <% if current_user.photo.attached? %>
                 <%= cl_image_tag current_user.photo.key, crop: :thumb, gravity: :face, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
               <% else %>
-                <%= image_tag '194279.png', crop: :thumb, gravity: :face, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
-
+                <%= image_tag 'paw.png', crop: :thumb, gravity: :face, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
               <% end %>
               <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                 <%= link_to "Edit Profile", edit_user_registration_path, class: "dropdown-item" %>
@@ -39,15 +53,14 @@
               </div>
             </li>
           <% end %>
-        <% else %>
-          <li class="nav-item">
-            <%= link_to "Login", new_user_session_path, class: "nav-link" %>
-          </li>
+          <% else %>
+            <li class="nav-item">
+              <%= link_to "Login", new_user_session_path, class: "nav-link" %>
+            </li>
 
-          <li class="nav-item">
-            <%= link_to "About Us", about_path, class: "nav-link" %>
-          </li>
-
+            <li class="nav-item">
+              <%= link_to "About Us", about_path, class: "nav-link" %>
+            </li>
         <% end %>
       </ul>
     </div>

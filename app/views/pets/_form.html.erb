@@ -4,10 +4,10 @@
     <%= f.submit class: "btn btn-light" %>
   <% end %>
 <% else %>
-  <%= simple_form_for(@pet) do |f| %>
+  <%= simple_form_for(pet) do |f| %>
     <%= f.input :name %>
     <%# <%= f.collection_radio_buttons :pet_type, [['Dog'], ['Cat']], :first, :last %>
-    <%= f.input :pet_type, collection: ["Dog", "Cat"] %>
+    <%= f.input :pet_type, collection: ["Cat", "Dog"] %>
     <%= f.input :breed %>
     <%= f.input :size, collection: ["Small", "Medium", "Big"] %>
     <%= f.input :weight %>

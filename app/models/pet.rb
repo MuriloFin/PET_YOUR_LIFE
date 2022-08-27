@@ -2,7 +2,8 @@ class Pet < ApplicationRecord
   belongs_to :user
   has_one_attached :photo
   has_many :adoptions, dependent: :destroy
-  validate :name, :pet_type, :breed, :colour, :size, :age
+  has_many :chatrooms, dependent: :destroy
+  validate :name, :pet_type, :breed, :colour, :size, :weight, :age
   include PgSearch::Model
   PET_TYPE = ["Dog", "Cat"]
   DOG_BREED = ["Golden Retriever", "German Shepherd", "Jack Russell", "Sem Raça Definida"]
