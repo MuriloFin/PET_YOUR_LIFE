@@ -8,8 +8,8 @@
     <% end %>
 
     <div class="create-button">
-    <% if current_user %>
-    <%= link_to 'Register Pet', new_pet_url, class: 'btn btn-light mt-3' %>
+    <% if current_user  %>
+    <%= link_to 'Registrar um Pet', new_pet_url, class: 'btn btn-light mt-3' %>
     <% end %>
     </div>
 
@@ -22,10 +22,10 @@
       <%= text_field_tag :query,
         params[:query],
         class: "form-control",
-        placeholder: "Find a Pet"
+        placeholder: "Encontre um Pet"
       %>
       <div>
-        <%= submit_tag "Search", class: "btn btn-light"  %>
+        <%= submit_tag "Pesquisar", class: "btn btn-light"  %>
       <% end %>
       </div>
     </div>
@@ -34,10 +34,10 @@
       <ul class="navbar-nav me-auto">
         <% if user_signed_in? %>
           <li class="nav-item">
-            <%#= link_to "My Pets", adoptions_path, class: "nav-link" %>
+            <%#= link_to "My Pets", adoptions_path, class: "btn btn-light" %>
           </li>
           <li class="nav-item">
-            <%= link_to "About Us", about_path, class: "nav-link" %>
+            <%= link_to "Sobre nós", about_path, class: "btn btn-light" %>
           </li>
 
           <% if current_user %>
@@ -48,18 +48,14 @@
                 <%= image_tag 'paw.png', crop: :thumb, gravity: :face, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
               <% end %>
               <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                <%= link_to "Edit Profile", edit_user_registration_path, class: "dropdown-item" %>
-                <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
+                <%= link_to "Editar Conta", edit_user_registration_path, class: "dropdown-item" %>
+                <%= link_to "Sair", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
               </div>
             </li>
           <% end %>
           <% else %>
             <li class="nav-item">
-              <%= link_to "Login", new_user_session_path, class: "nav-link" %>
-            </li>
-
-            <li class="nav-item">
-              <%= link_to "About Us", about_path, class: "nav-link" %>
+              <%= link_to "Cadastre-se/Entrar", new_user_session_path, class: "btn btn-light" %>
             </li>
         <% end %>
       </ul>
