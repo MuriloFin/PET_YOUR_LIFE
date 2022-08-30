@@ -33,9 +33,12 @@
     <span class="visually-hidden">Next</span>
   </button>
 </div>
-
-<div>
-  <h1><u><em>Encontre aqui o seu melhor amigo</em></u></h1>
+<div class="container">
+<div class="subtitulo">
+  <h1>Seja Adotado por um Melhor Amigo</h1>
+</div>
+<div class="titulo">
+  <h1>Pet Your Life</h1>
 </div>
 <div class="mx-5">
   <div class="cards">
@@ -44,7 +47,7 @@
       <%= link_to pet_path(pet) do %>
         <div class="card-trip">
           <% if pet.photo.attached? %>
-            <%= cl_image_tag pet.photo.key, height: 300, width: 400, crop: :fill %>
+            <%= cl_image_tag pet.photo.key, height: 300, width: 400, :gravity=>"faces", :crop=>"thumb" %>
           <% else %>
             <img src= "https://source.unsplash.com/random/?dog" alt="">
           <% end %>
@@ -62,6 +65,17 @@
   </div>
   </div>
   <br>
+  <div class="create-button">
+    <%= link_to 'Register Pet', new_pet_url, class: 'btn btn-light btn-lg'  %>
+  </div>
+
+  <div id="map" class="mb-5" style="width: 100%; height: 600px;"
+  data-controller="mapbox"
+  data-mapbox-markers-value="<%= @markers.to_json %>"
+  data-mapbox-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+  </div>
+</div>
+
 <div class="footer">
   <div class="footer-links">
     <a href="#"><i class="fab fa-instagram"></i></a>

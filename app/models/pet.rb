@@ -13,6 +13,10 @@ class Pet < ApplicationRecord
     using: {
       tsearch: { prefix: true }
     }
+
+  geocoded_by :address
+  after_validation :geocode
+  
   def adopted!
     self.update_attribute :adopted, true
   end

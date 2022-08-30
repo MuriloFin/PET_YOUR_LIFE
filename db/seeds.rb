@@ -6,6 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 require 'faker'
+require 'geocoder'
 
 case Rails.env
 when "development"
@@ -23,6 +24,7 @@ when "development"
       telephone: Faker::PhoneNumber.cell_phone,
       address: Faker::Address.street_address
     )
+    #address = Geocoder.search(Faker::Address.city)
 
     Pet.create!(
       name: Faker::Creature::Dog.name,
@@ -31,6 +33,9 @@ when "development"
       colour: Faker::Color.color_name,
       size: Faker::Creature::Dog.age,
       weight: Faker::Creature::Dog.size,
+      address: Faker::Address.street_address,
+      latitude: Faker::Address.latitude,
+      longitude: Faker::Address.longitude,
       description: Faker::Lorem.sentence,
       user: user
     )
