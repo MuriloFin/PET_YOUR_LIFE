@@ -1,18 +1,28 @@
 class PetsController < ApplicationController
   skip_before_action :authenticate_user!, only: :index
   def index
-    @pets = policy_scope(Pet).where(breed: search_params[:breed]).where(pet_type: search_params[:pet_type]).where(colour: search_params[:colour])
-    @data = { dog: Pet::DOG_BREED, cat: Pet::CAT_BREED }
-    # if params[:query]
-    #   @pets = Pet.global_search(params[:query])
-    # else
-
-    # end
-    if params[:query].present?
-      @pets = Pet.where("name ILIKE ?", "%#{params[:query]}%")
+    if params[:query]
+      @pets = Pet.global_search(params[:query])
+    elsif params[:filter]
+      # {"pet_type"=>"Cachorro", "breed"=>"Sem Raça Definida", "colour"=>"", "size"=>"", "age"=>""}
+      where = {}
+      params[:filter].each do |key, value|
+      next if value == ""
+        where[key] = value
+      end
+      @pets = Pet.where(where)
+      # @pets = Pet.global_search(params[:filter][:pet_type])
     else
       @pets = policy_scope(Pet)
     end
+    # end
+    # if params[:query].present?
+    #   @pets = Pet.where("name ILIKE ?", "%#{params[:query]}%")
+    # elsif params[:colour] != ''
+    #   @pets = policy_scope(Pet).where(breed: search_params[:breed]).where(pet_type: search_params[:pet_type]).where(colour: search_params[:colour])
+    # else
+
+    @data = { dog: Pet::DOG_BREED, cat: Pet::CAT_BREED }
 
     @markers = @pets.geocoded.map do |pet|
       {

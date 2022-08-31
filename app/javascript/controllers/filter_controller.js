@@ -5,6 +5,7 @@ export default class extends Controller {
   static values = { data: Object }
 
   selectPet() {
+    console.log(this.dataValue)
     if (this.petSelectTarget.value == "Cachorro") {
       let htmlDogs = ''
       this.dataValue.dog.forEach(dogBreed => {

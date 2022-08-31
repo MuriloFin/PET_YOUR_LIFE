@@ -6,13 +6,13 @@ class Pet < ApplicationRecord
   validate :name, :pet_type, :breed, :colour, :size, :weight, :age
   include PgSearch::Model
   PET_TYPE = ["Cachorro", "Gato"]
-  DOG_BREED = ["Golden Retriever", "German Shepherd", "Jack Russell", "Sem Raça Definida"]
-  CAT_BREED = ["Siamese", "Bengal", "Maine Coon", "Sem Raça Definida"]
-  COLOUR = ["Black", "White", "Grey", "Brown", "Beige", "Multicolor"]
-  SIZE = ["Small", "Medium", "Big"]
-  AGE = ["Puppy", "Adult"]
+  DOG_BREED = ["Sem Raça Definida", "Golden Retriever", "Pastor Alemão", "Jack Russell"]
+  CAT_BREED = ["Sem Raça Definida", "Siamês", "Bengal", "Maine Coon"]
+  COLOUR = ["Preto", "Branco", "Cinza", "Marrom", "Bege", "Multicolor"]
+  SIZE = ["Pequeno", "Médio", "Grande"]
+  AGE = ["Filhote", "Adulto"]
   pg_search_scope :global_search,
-    against: %i[ name pet_type breed colour size weight ],
+    against: %i[ name pet_type breed colour size age ],
     associated_against: {
       user: %i[first_name last_name]
     },
@@ -26,4 +26,6 @@ class Pet < ApplicationRecord
   def adopted!
     self.update_attribute :adopted, true
   end
+
+
 end
