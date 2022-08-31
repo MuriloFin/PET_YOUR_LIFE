@@ -17,7 +17,7 @@
       <span class="navbar-toggler-icon"></span>
     </button>
 
-    <div class="search-bar row">
+    <div class="search-bar">
     <%= form_tag pets_path, method: :get, class:"d-flex" do %>
       <%= text_field_tag :query,
         params[:query],
@@ -41,7 +41,7 @@
           </li>
 
           <% if current_user %>
-            <li class="nav-item dropdown">
+            <li class="nav-item dropdown separate-btns">
               <% if current_user.photo.attached? %>
                 <%= cl_image_tag current_user.photo.key, crop: :thumb, gravity: :face, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
               <% else %>

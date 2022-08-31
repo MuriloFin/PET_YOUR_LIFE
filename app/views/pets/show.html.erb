@@ -24,15 +24,18 @@
               <% if policy(@pet).destroy? %>
                 <%= link_to 'Remover Pet', pet_path(@pet), method: :delete, class: 'btn btn-light mt-1' %>
               <% end %>
+              <% if policy(@pet).edit? %>
+                <%= link_to 'Edit', edit_pet_path(@pet), class: 'btn btn-light' %>
+              <% end %>
             </div>
           </div>
         </div>
           <ul class="chat">
-            <% @chatrooms.each do |chat| %>
-            <li><% link_to chat.name, chatroom_path(chat) %></li>
-            <% end %>
-          </ul>
-        </div>
+          <% @chatrooms.each do |chat| %>
+          <li><% link_to chat.name, chatroom_path(chat) %></li>
+          <% end %>
+        </ul>
       </div>
     </div>
+  </div>
 </div>
