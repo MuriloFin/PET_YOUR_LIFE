@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+  before_action :authenticate_user!
   include Pundit
   skip_before_action :verify_authenticity_token
   # before_action :authenticate_user!, unless: :auth_request?

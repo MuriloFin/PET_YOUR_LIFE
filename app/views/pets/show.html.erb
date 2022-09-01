@@ -5,10 +5,12 @@
     <div class="show-cards ms-4">
       <ul class="list-unstyled">
         <li><strong>Nome: </strong><%= @pet.name %></li>
+        <li><strong>Tipo: </strong><%= @pet.pet_type %></li>
         <li><strong>Raça: </strong><%= @pet.breed %></li>
         <li><strong>Peso: </strong><%= @pet.weight %>kg</li>
         <li><strong>Tamanho: </strong><%= @pet.size %></li>
         <li><strong>Cor: </strong><%= @pet.colour %></li>
+        <li><strong>Idade: </strong><%= @pet.age %></li>
       <% if @pet.description.present? %>
         <li><strong>Descrição: </strong><%= @pet.description %></li>
       <% end %>

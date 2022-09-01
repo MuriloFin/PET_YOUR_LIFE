@@ -48,8 +48,8 @@
                 <%= image_tag 'paw.png', crop: :thumb, gravity: :face, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
               <% end %>
               <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                <%= link_to "Edit Profile", edit_user_registration_path, class: "dropdown-item" %>
-                <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
+                <%= link_to "Editar Perfil", edit_user_registration_path, class: "dropdown-item" %>
+                <%= link_to "Sair da sessão", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
               </div>
             </li>
           <% end %>
