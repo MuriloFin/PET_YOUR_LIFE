@@ -1,0 +1,16 @@
+<h1>Your likes</h1>
+<div class="cards">
+
+  <% @likes.each_with_index do |like, index| %>
+    <%= link_to pet_path(like.pet) do %>
+      <div class="card-trip">
+        <img src=<%= like.pet.photo ? like.pet.photo : "https://source.unsplash.com/random/?planet" %> alt="">
+        <div class="card-trip-infos">
+          <div>
+            <h2><%= like.pet.name %></h2>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+</div>

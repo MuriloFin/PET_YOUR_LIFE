@@ -1,0 +1,13 @@
+<%# current_user = User.first %>
+<% if like = !Like.where(user: current_user).where(pet: pet.id).empty? %>
+<% @like = Like.where(user: current_user).where(pet: pet.id).first%>
+	<%= form_for @like, :html => { :method => :delete }, :remote => true do |f| %>
+		<%= f.submit "Unlike" %>
+	<% end %>
+<% else %>
+	<%= form_for Like.new(:pet_id => pet.id), :remote => true, :method => :post do |f| %>
+		<%= f.hidden_field :pet_id %>
+		<%= f.hidden_field :user_id %>
+		<%= f.submit "Like" %>
+	<% end %>
+<% end %>

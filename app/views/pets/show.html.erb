@@ -14,6 +14,23 @@
       <% end %>
       <div class="d-inline-flex justify-content-between btn-show">
       <% if current_user %>
+        <% if Like.where(user_id: current_user.id, pet_id: @pet.id).empty? %>
+        <button type="button" class="btn btn-success">
+          <form action="/likes" method="post">
+            <i class="fas fa-thumbs-up"></i>
+            <input type="text" name="pet_id" value=<%= "#{@pet.id}" %> class="d-none" >
+            <input class="btn btn-success btn-sm border border-0" type="submit" value="">
+          </form>
+          </button>
+        <% else %>
+        <button type="button" class="btn btn-info">
+          <form action=<%= "/likes/#{Like.where(user_id: current_user.id, pet_id: @pet.id).first.id}" %> method="POST">
+            <i class="fas fa-thumbs-down"></i>
+            <input type="hidden" name="_method" value="delete" />
+            <input class="btn btn-info btn-sm border border-0" type="submit" value="">
+          </form>
+          </button>
+        <% end %>
         <%= button_to "Adotar", pet_chatrooms_path(@pet), class: 'btn btn-light mt-1' %>
       <% end %>
       <% if policy(@pet).destroy? %>

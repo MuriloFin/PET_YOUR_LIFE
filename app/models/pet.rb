@@ -3,6 +3,7 @@ class Pet < ApplicationRecord
   has_one_attached :photo
   has_many :adoptions, dependent: :destroy
   has_many :chatrooms, dependent: :destroy
+  has_many :likes
   validate :name, :pet_type, :breed, :colour, :size, :weight
   include PgSearch::Model
   pg_search_scope :global_search,

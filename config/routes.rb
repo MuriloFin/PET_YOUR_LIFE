@@ -9,6 +9,8 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :likes, only: [:index, :create, :new, :destroy]
+
   get "about", to: "pages#about"
   get "terms", to: "pages#terms", as: 'terms'
   get "touch", to: "pages#touch", as: 'touch'
