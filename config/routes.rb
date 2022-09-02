@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   devise_for :users, controllers: {
     sessions: 'users/sessions'
   }
-  root to: 'pets#index'
+  root to: 'pages#home'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   resources :pets, shallow: true do
     resources :adoptions, only: %i[new create show]
@@ -11,8 +11,9 @@ Rails.application.routes.draw do
     end
   end
 
+  get "pets", to: 'pets#index'
   get "about", to: "pages#about"
-  get "terms", to: "pages#terms", as: 'terms'
-  get "touch", to: "pages#touch", as: 'touch'
-  get "donate", to: "pages#donate", as: 'donate'
+  get "terms", to: "pages#terms"
+  get "touch", to: "pages#touch"
+  get "donate", to: "pages#donate"
 end
