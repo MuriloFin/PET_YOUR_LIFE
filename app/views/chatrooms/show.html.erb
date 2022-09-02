@@ -1,24 +1,31 @@
-<div class="container chatroom"
-  data-controller="chatroom-subscription"
-  data-chatroom-subscription-chatroom-id-value="<%= @chatroom.id %>"
->
-  <h1>#<%= @chatroom.name %></h1>
+<div class="d-flex">
+  <div class="chat-img">
+    <%= cl_image_tag @chatroom.pet.photo.key, height: 300, width: 400, :gravity=>"faces", :crop=>"thumb" %>
+  </div>
+  <div class="container chatroom"
+    data-controller="chatroom-subscription"
+    data-chatroom-subscription-chatroom-id-value="<%= @chatroom.id %>"
+  >
+    <h1>Chat de <%= @chatroom.name %></h1>
 
-  <div class="messages" data-chatroom-subscription-target="messages">
-    <% @chatroom.messages.each do |message| %>
-      <%= render "messages/message", message: message %>
+    <div class="messages" data-chatroom-subscription-target="messages">
+      <% @chatroom.messages.each do |message| %>
+        <%= render "messages/message", message: message %>
+      <% end %>
+    </div>
+
+    <%= simple_form_for [@pet, @chatroom, @message],
+      remote: true,
+      html: {data: {action: "ajax:success->chatroom-subscription#resetForm"}, class: "d-flex" } do |f|
+    %>
+      <%= f.input :content,
+        label: false,
+        placeholder: "Digite sua mensagem",
+        wrapper_html: {class: "flex-grow-1"}
+      %>
+      <div class="send-btn">
+        <%= f.submit "Enviar", class: "btn btn-light" %>
+      </div>
     <% end %>
   </div>
-
-  <%= simple_form_for [@pet, @chatroom, @message],
-    remote: true,
-    html: {data: {action: "ajax:success->chatroom-subscription#resetForm"}, class: "d-flex" } do |f|
-  %>
-    <%= f.input :content,
-      label: false,
-      placeholder: "Message ##{@chatroom.name}",
-      wrapper_html: {class: "flex-grow-1"}
-    %>
-    <%= f.submit "Send", class: "btn btn-light" %>
-  <% end %>
 </div>

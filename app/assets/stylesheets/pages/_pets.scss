@@ -1,9 +1,27 @@
 .pets-show {
-  margin-top: 20px;
-  border: 2px solid rgb(103,93,93);
-  border-radius: 10px;
-  padding: 20px;
-  width: 640px;
+  margin: 50px auto;
+  box-shadow: 10px 10px 30px rgba(0,0,0,0.2);
+  border-radius: 15px;
+  padding: 80px 50px;
+  width: 1000px;
+  background-color: #F0EBE3;
+
+}
+
+.pets-show img {
+  border-radius: 8px;
+  width: 400px;
+}
+
+.pet-box {
+  display: flex;
+  align-items: flex-start ;
+  justify-content: center;
+  flex-direction: row;
+}
+
+.chat {
+  justify-content: center;
 }
 
 .btn-show {

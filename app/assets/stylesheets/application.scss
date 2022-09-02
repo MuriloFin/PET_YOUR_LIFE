@@ -7,6 +7,8 @@
 @import "bootstrap/scss/bootstrap";
 @import "font-awesome-sprockets";
 @import "font-awesome";
+@import "mapbox-gl/dist/mapbox-gl.css";
+@import "@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder";
 
 // Your CSS partials
 @import "components/index";
@@ -21,7 +23,6 @@ body {
 h1 {
   text-align: center;
   margin-top: 80px;
-  font-size: 48px;
 }
 
 h2 {
@@ -38,6 +39,7 @@ h2 {
 .btn {
   border: 1px solid #483D3F;
   border-radius: 6px;
+  margin-left: 10px;
 }
 
 .cards {
@@ -66,6 +68,10 @@ h2 {
   text-align: justify;
   font-size: 20px;
   margin-top: 30px;
+}
+
+.title h1 {
+  text-shadow: 1px 0px 2px #2c2627;
 }
 
 a {
@@ -109,4 +115,46 @@ footer ul {
   border: solid;
   margin-top: 8px;
   margin-left: 10px;
+}
+
+.titulo h1 {
+  text-shadow: 1px 0px 2px #2c2627;
+  font-size: 60px;
+}
+
+.subtitulo h1 {
+  text-shadow: 1px 0px 2px #2c2627;
+  font-size: 30px;
+}
+
+.separate-btns {
+  margin-left: 7px;
+}
+
+.msg-size {
+  color: #F3E9DC;
+  border-radius: 8px;
+  background-color: #483d3fd6;
+  padding-right: 5px;
+  text-align: right;
+}
+
+.current-msg {
+  color: #ffffff;
+  border-radius: 8px;
+  background-color: #039edb;
+  padding-left: 5px;
+  text-align: left;
+}
+
+.chat-img img {
+  margin-left: 30px;
+  margin-top: 15px;
+  border: 2px solid #483D3F;
+  border-radius: 8px;
+  box-shadow: 10px 10px 10px 0px #483D3F;
+}
+
+body {
+  height: 100vh;
 }
