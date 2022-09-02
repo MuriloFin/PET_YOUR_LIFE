@@ -1,25 +1,19 @@
-<div class="container">
-    <div class="pets-show">
-      <h1 class="mt-0"><strong>Registrar</strong></h1>
-      <% if params[:adopt] == "true" %>
-        <%= simple_form_for(pet) do |f| %>
-          <%= f.input :adopted, input_html: { value: false }, as: :hidden %>
-          <%= f.submit class: "btn btn-light" %>
-        <% end %>
-      <% else %>
-        <%= simple_form_for(pet) do |f| %>
-          <%= f.input :name %>
-          <%= f.input :pet_type, collection: ["Cat", "Dog"] %>
-          <%= f.input :breed %>
-          <%= f.input :weight %>
-          <%= f.input :size %>
-          <%= f.input :colour %>
-          <%= f.input :address %>
-          <%= f.input :photo, as: :file %>
-          <%= f.input :description %>
-          <%= f.submit class: "btn btn-light" %>
-        <% end %>
-      <% end %>
-    </div>
-  </div>
-</div>
+<% if params[:adopt] == "true" %>
+  <%= simple_form_for(pet) do |f| %>
+    <%= f.input :adopted, input_html: { value: false }, as: :hidden %>
+    <%= f.submit class: "btn btn-light" %>
+  <% end %>
+<% else %>
+  <%= simple_form_for(pet) do |f| %>
+    <%= f.input :name %>
+    <%= f.input :pet_type, collection: ["Cat", "Dog"] %>
+    <%= f.input :breed %>
+    <%= f.input :weight %>
+    <%= f.input :size %>
+    <%= f.input :colour %>
+    <%= f.input :address %>
+    <%= f.input :photo, as: :file %>
+    <%= f.input :description %>
+    <%= f.submit class: "btn btn-light" %>
+  <% end %>
+<% end %>
