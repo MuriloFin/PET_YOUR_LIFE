@@ -5,15 +5,27 @@
   <% end %>
 <% else %>
   <%= simple_form_for(pet) do |f| %>
-    <%= f.input :name %>
-    <%= f.input :pet_type, collection: ["Cat", "Dog"] %>
-    <%= f.input :breed %>
-    <%= f.input :weight %>
-    <%= f.input :size %>
-    <%= f.input :colour %>
-    <%= f.input :address %>
-    <%= f.input :photo, as: :file, required: true %>
-    <%= f.input :description %>
-    <%= f.submit class: "btn btn-light" %>
+    <div class= 'row' data-controller="filter" data-filter-data-value='<%= @data.to_json%>'>
+      <%= f.input :name, label: "Nome"%>
+      <%# <%= f.collection_radio_buttons :pet_type, [['Dog'], ['Cat']], :first, :last %>
+      <div class= 'col-4'>
+        <%= f.input :pet_type, label: "Espécie",
+        collection: ["Cachorro", "Gato"],
+        as: :radio_buttons,
+        input_html: { data: { filter_target: "petSelect",
+          action: "click->filter#selectPetForm"} } %>
+      </div>
+      <div class= 'col-4'> <%= f.input :gender, label: "Sexo", collection: ["Fêmea", "Macho"], as: :radio_buttons %> </div>
+      <div class= 'col-4'> <%= f.input :age,  label: "Idade", collection: ["Filhote", "Adulto"], as: :radio_buttons %> </div>
+      <%= f.input :breed, collection: Pet::DOG_BREED, label: "Raça", input_html: { data: {
+          filter_target: "breedSelect"
+        } } %>
+      <%= f.input :size, label: "Porte", collection: ["Pequeno", "Médio", "Grande"] %>
+      <%= f.input :weight, label: "Peso" %>
+      <%= f.input :colour, label: "Cor", collection: ["Preto", "Branco", "Cinza", "Marrom", "Bege", "Multicolor"]%>
+      <%= f.input :description, label: "Descrição" %>
+      <%= f.input :photo, label: "Foto", as: :file, required: true %>
+    </div>
+      <%= f.submit "Criar", class: "btn btn-light" %>
   <% end %>
 <% end %>
