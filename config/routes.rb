@@ -11,6 +11,8 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :likes, only: [:index, :create, :new, :destroy]
+
   get "pets", to: 'pets#index'
   get "about", to: "pages#about"
   get "terms", to: "pages#terms"

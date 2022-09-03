@@ -24,7 +24,8 @@
       <%= f.input :weight, label: "Peso" %>
       <%= f.input :colour, label: "Cor", collection: ["Preto", "Branco", "Cinza", "Marrom", "Bege", "Multicolor"]%>
       <%= f.input :description, label: "Descrição" %>
-      <%= f.input :photo, label: "Foto", as: :file %>
+      <%= f.input :address, label: "Endereço"%>
+      <%= f.input :photo, label: "Foto", as: :file, required: true %>
     </div>
       <%= f.submit "Criar", class: "btn btn-light" %>
   <% end %>
