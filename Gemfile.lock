@@ -14,17 +14,6 @@ GIT
       actionpack (>= 5.2)
       activemodel (>= 5.2)
 
-GIT
-  remote: https://github.com/n-studio/administrate.git
-  revision: ea9999184e0e668d98a6804d96c26211723c3239
-  branch: compile-assets
-  specs:
-    administrate (0.17.0)
-      actionpack (>= 5.0)
-      actionview (>= 5.0)
-      activerecord (>= 5.0)
-      kaminari (>= 1.0)
-
 GEM
   remote: https://rubygems.org/
   specs:
@@ -142,18 +131,6 @@ GEM
     jbuilder (2.11.5)
       actionview (>= 5.0.0)
       activesupport (>= 5.0.0)
-    kaminari (1.2.2)
-      activesupport (>= 4.1.0)
-      kaminari-actionview (= 1.2.2)
-      kaminari-activerecord (= 1.2.2)
-      kaminari-core (= 1.2.2)
-    kaminari-actionview (1.2.2)
-      actionview
-      kaminari-core (= 1.2.2)
-    kaminari-activerecord (1.2.2)
-      activerecord
-      kaminari-core (= 1.2.2)
-    kaminari-core (1.2.2)
     listen (3.7.1)
       rb-fsevent (~> 0.10, >= 0.10.3)
       rb-inotify (~> 0.9, >= 0.9.10)
@@ -311,7 +288,6 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
-  administrate!
   autoprefixer-rails (= 10.2.5)
   bootsnap (>= 1.4.4)
   byebug
