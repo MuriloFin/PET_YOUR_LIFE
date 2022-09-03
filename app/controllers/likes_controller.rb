@@ -10,10 +10,10 @@ class LikesController < ApplicationController
   end
 
   def create
-
-    @like = Like.new(user_id: current_user.id, pet_id: params[:pet_id])
+    @pet = Pet.find(params[:pet_id])
+    @like = Like.new(user_id: current_user.id)
     skip_authorization
-    #@like.pet = @pet
+    @like.pet = @pet
     if @like.save
       flash[:alert] = "Pet Liked!"
       redirect_to pet_path(@like.pet)
