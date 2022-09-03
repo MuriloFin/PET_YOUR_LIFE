@@ -40,20 +40,36 @@
 <div class="titulo">
   <h1>Pet Your Life</h1>
 </div>
-<div data-controller="filter" data-filter-data-value='<%= @data.to_json%>' class="search-bar col-sm-8 offset-sm-2">
+<div data-controller="filter" data-filter-data-value='<%= @data.to_json%>' class="g-3 mt-5 px-5 mx-5">
   <%= form_with(scope: :filter, model: @pet, method: :get) do |f| %>
-    <%= f.select :pet_type, options_for_select(Pet::PET_TYPE, params[:pet_type]), { prompt: "Espécie?", include_blank: false }, { data: {
-      filter_target: "petSelect",
-      action: "change->filter#selectPet"
-    } } %>
-    <%= f.select :breed, options_for_select(Pet::DOG_BREED, params[:breed]), { prompt: "Raça?" }, { data: {
-      filter_target: "breedSelect"
-    } } %>
-    <%= f.select :age, Pet::AGE, prompt: "Idade?"%>
-    <%= f.select :gender, Pet::GENDER, prompt: "Sexo?"%>
-    <%= f.select :colour, Pet::COLOUR, prompt: "Cor?"%>
-    <%= f.select :size, Pet::SIZE, prompt: "Porte?"%>
-    <%= f.submit "Pesquisar"%>
+    <div class="d-flex justify-content-center">
+      <div>
+        <%= f.select :pet_type, options_for_select(Pet::PET_TYPE, params[:pet_type]), { prompt: "Espécie ↓", include_blank: false }, { data: {
+          filter_target: "petSelect",
+          action: "change->filter#selectPet"
+        }, class: "btn form-control btn-filter" } %>
+      </div>
+      <div>
+        <%= f.select :breed, options_for_select(Pet::DOG_BREED, params[:breed]), { prompt: "Raça ↓" }, { data: {
+          filter_target: "breedSelect"
+        }, class: "btn form-control btn-filter" } %>
+      </div>
+      <div>
+        <%= f.select :age, Pet::AGE, { prompt: "Idade ↓" } , { class: "btn form-control btn-filter" }%>
+      </div>
+      <div>
+        <%= f.select :gender, Pet::GENDER,{ prompt: "Sexo ↓" } , { class: "btn form-control btn-filter" }%>
+      </div>
+      <div>
+        <%= f.select :colour, Pet::COLOUR, { prompt: "Cor ↓" } , { class: "btn form-control btn-filter" }%>
+      </div>
+      <div>
+        <%= f.select :size, Pet::SIZE, { prompt: "Porte ↓" } , { class: "btn form-control btn-filter" }%>
+      </div>
+      <div>
+        <%= f.submit "Pesquisar", class: "btn btn-light btn-filter"%>
+      </div>
+    </div>
   <% end %>
 </div>
 <div class="mx-5">
