@@ -1,0 +1,18 @@
+<h1>Meus Likes</h1>
+<div class="container">
+<div class="cards">
+
+  <% @likes.each_with_index do |like, index| %>
+    <%= link_to pet_path(like.pet_id) do %>
+      <div class="card-trip">
+       <%= cl_image_tag like.pet.photo.key, height: 300, width: 400, :gravity=>"faces", :crop=>"thumb" %>
+        <div class="card-trip-infos">
+          <div>
+            <h2><%= like.pet.name %></h2>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+</div>
+</div>
