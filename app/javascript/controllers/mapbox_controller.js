@@ -1,5 +1,5 @@
 import { Controller } from "@hotwired/stimulus"
-import mapboxgl from "mapbox-gl"
+import mapboxgl from 'mapbox-gl/dist/mapbox-gl-csp'
 import MapboxGeocoder from "@mapbox/mapbox-gl-geocoder"
 
 export default class extends Controller {
