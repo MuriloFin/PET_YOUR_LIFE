@@ -136,16 +136,24 @@ footer ul {
   color: #F3E9DC;
   border-radius: 8px;
   background-color: #483d3fd6;
-  padding-right: 5px;
+  padding: 5px 10px;
   text-align: right;
+  margin-bottom: 5px;
+  p {
+    margin-bottom: 0;
+  }
 }
 
 .current-msg {
   color: #ffffff;
   border-radius: 8px;
   background-color: #039edb;
-  padding-left: 5px;
+  padding: 5px 10px;
   text-align: left;
+  margin-bottom: 5px;
+  p {
+    margin-bottom: 0;
+  }
 }
 
 .chat-img img {
@@ -158,4 +166,10 @@ footer ul {
 
 body {
   height: 100vh;
+}
+
+.container-show-pet {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
 }

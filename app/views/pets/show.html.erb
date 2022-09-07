@@ -5,7 +5,7 @@
         <div class="col-6 d-flex justify-content-center">
           <img src=<%= @pet.photo.attached? ? @pet.photo.url : "https://source.unsplash.com/random/?pet&fit=crop&max-h=150&max-w=150" %> class="img-show">
         </div>
-          <div class="col-6">
+          <div class="container-show-pet col-6">
             <div class="show-cards ms-4">
               <div>
               <ul class="list-unstyled">
@@ -16,8 +16,8 @@
                 <li><strong>Cor: </strong><%= @pet.colour %></li>
                 <li><strong>Descrição: </strong><%= @pet.description %></li>
               </ul>
-            <div class="d-inline-flex justify-content-between btn-show">
-              <% if current_user %>
+            <% if @pet.user != current_user %>
+              <div class="d-inline-flex justify-content-between btn-show">
                 <% if Like.where(user_id: current_user.id, pet_id: @pet.id).empty? %>
                 <button type="button" class="btn btn-success">
                   <form action="/likes" method="post">
@@ -36,10 +36,19 @@
                   </button>
                 <% end %>
                 <%= button_to "Adotar", pet_chatrooms_path(@pet), class: 'btn btn-light mt-1' %>
+              </div>
+              <% else %>
+              <div class="d-inline-flex justify-content-between btn-show">
+                <% @pet.chatrooms.each do |chatroom| %>
+                  <%= link_to chatroom_path(chatroom), class: 'btn btn-light mt-1' do %>
+                    <%= chatroom.user.email %><br><i class="far fa-comment"></i>
+                  <% end %>
+                <% end %>
+              </div>
               <% end %>
-            <div class="separate-btns">
+            <div class="separate-btns mt-5">
               <% if policy(@pet).destroy? %>
-                <%= link_to 'Remover Pet', pet_path(@pet), method: :delete, class: 'btn btn-light mt-1' %>
+                <strong><%= link_to 'Remover Pet', pet_path(@pet), method: :delete %></strong>
               <% end %>
             </div>
           </div>

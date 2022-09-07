@@ -1,4 +1,4 @@
-<div class="<%= current_user ? 'msg-size' : 'current-msg' %>">
+<div class="<%= message.user == current_user ? 'msg-size' : 'current-msg' %>">
   <div id="message-<%= message.id %>">
       <small>
         <strong><%= message.user.email %></strong>
