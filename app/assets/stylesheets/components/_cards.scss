@@ -23,7 +23,7 @@
   font-size: 16px;
   font-weight: bold;
   margin: 0;
-  color: #483D3F;;
+  color: #e73656;;
 }
 
 .card-trip p {
@@ -44,13 +44,13 @@
   border-width: 2px;
 }
 
-.card-trip-infos .card-trip-user {
-  position: absolute;
-  right: 16px;
-  top: -20px;
-  width: 40px;
-  height: 40px;
-}
+// .card-trip-infos .card-trip-user {
+//   position: absolute;
+//   right: 16px;
+//   top: -20px;
+//   width: 40px;
+//   height: 40px;
+// }
 
 .cards {
   display: grid;

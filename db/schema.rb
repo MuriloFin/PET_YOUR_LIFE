@@ -91,11 +91,11 @@ ActiveRecord::Schema.define(version: 2022_08_27_192149) do
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "user_id"
     t.string "image"
-    t.string "age"
-    t.string "gender"
     t.float "latitude"
     t.float "longitude"
     t.string "address"
+    t.string "age"
+    t.string "gender"
     t.index ["user_id"], name: "index_pets_on_user_id"
   end
 
